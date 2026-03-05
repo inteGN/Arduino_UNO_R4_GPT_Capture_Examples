@@ -1,8 +1,10 @@
 # Arduino_UNO_R4_GPT_Capture_Examples
 
 ## 目的 / Purpose
-このリポジトリは、Arduino UNO R4 (RA4M1)のGPTタイマーによるインプットキャプチャ機能の利用方法を示しています。  
+このリポジトリは、Arduino UNO R4 (RA4M1) のGPTタイマーによるインプットキャプチャ機能の利用方法を示しています。  
+単純な例と、GPTの複数の割り込み処理を含んだ車輪の回転速度を計測する応用例を提示します。  
 This repository demonstrates how to use the GPT timer's input-capture functionality on the Arduino UNO R4 (RA4M1).  
+It includes a simple capture example and a practical wheel‑speed measurement program that combines multiple GPT interrupt events.  
 
 ---
 
@@ -19,6 +21,17 @@ On the UNO R4 WiFi, the RA4M1 port assignment for Arduino pins differs, which ma
    - It demonstrates how to capture input pulses on the Arduino UNO R4 MINIMA using the timer GPT2.  
    - Each rising edge on the pin D4/GPT2_A is timestamped, and the captured value is shown through the serial monitor.  
    - A test signal is generated on pin D6 to provide a simple input source for verification.  
+<br>
+
+2. **wheel speed measurement** `speed_measurement.ino`  
+   - Arduino UNO R4 MINIMA (RA4M1)でGPT2タイマーを使用してホイール回転速度を測定します。  
+   - D4/GPT2_Aピンの立ち上がりエッジ毎にタイムスタンプが付けられ、連続するエッジ間の間隔が車輪の回転速度に変換されます。  
+   - GPT2の16ビット制限を越えるために、32ビット拡張カウンタがソフトウェア的に実装されています。  
+   - 検証のために、ホイールパルスをシミュレートするテスト信号がD6ピンから生成されます。  
+   - It measures wheel rotational speed on the Arduino UNO R4 MINIMA (RA4M1) using the timer GPT2.  
+   - Each rising edge on the pin D4/GPT2_A is timestamped, and the interval between consecutive edges is converted into wheel speed.  
+   - A 32‑bit extended counter is implemented in software to overcome the 16‑bit limitation of the GPT2 hardware.  
+   - A test signal is generated on D6 to simulate wheel pulses for validation.  
 <br>
 
 ---
